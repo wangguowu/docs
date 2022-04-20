@@ -1,9 +1,17 @@
 ## 声明Queue
+      @Configuration
+      public class RabbitConfig {
+          Queue queue1(){
+              return new Queue("simple.queue");
+          }
+      }
+
 * exclusive: false, //队列是否专属
 * durable：是否持久化，RabbitMQ关闭后，没有持久化的Exchange将被清除
 * autoDelete：是否自动删除，如果没有与之绑定的Queue，直接删除
 * internal：是否内置的，如果为true，只能通过Exchange到Exchange
 * arguments：结构化参数
+
 ## ack机制
 + @Header(AmqpHeaders.DELIVERY_TAG) tag 取出来当前消息在队列中的的索引
 + multiple:为true的话就是批量确认
