@@ -8,7 +8,7 @@
 + @Header(AmqpHeaders.DELIVERY_TAG) tag 取出来当前消息在队列中的的索引
 + multiple:为true的话就是批量确认
 + channel.basicAck(tag, false);
-    ### ack机制
+    ### ack应答
 1. 拒绝，有异常就绝收消息
    > requeue:true为将消息重返当前消息队列,还可以重新发送给消费者; false:将消息丢弃
    
