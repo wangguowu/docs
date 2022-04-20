@@ -1,3 +1,21 @@
+## maven
+    <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-amqp</artifactId>
+            <!-- <version>2.6.6</version> -->
+    </dependency>
+
+## yml
+    rabbitmq:
+        host: xxx
+        port: 5672
+        username: xxx
+        password: xxx
+        virtual-host: tiku_test
+        listener:
+            simple:
+                acknowledge-mode: manual
+
 ## 声明Queue
       @Configuration
       public class RabbitConfig {
@@ -11,41 +29,6 @@
 * autoDelete：是否自动删除，如果没有与之绑定的Queue，直接删除
 * internal：是否内置的，如果为true，只能通过Exchange到Exchange
 * arguments：结构化参数
-
-## ack机制
-+ @Header(AmqpHeaders.DELIVERY_TAG) tag 取出来当前消息在队列中的的索引
-+ multiple:为true的话就是批量确认
-+ channel.basicAck(tag, false);
-    ### ack应答
-1. 拒绝，有异常就绝收消息
-   > requeue:true为将消息重返当前消息队列,还可以重新发送给消费者; false:将消息丢弃
-   
-   > basicNack(long deliveryTag, boolean multiple, boolean requeue)
-   
-   >> channel.basicNack(tag,false,true)
-   > 
-   > > mq每60秒重试一次，总共16次
-2. 响应成功
-   > channel.basicAck(tag, false);
-3. 不响应
-   > mq每60秒重试一次，总共16次
-    
-## maven
-    <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-amqp</artifactId>
-            <!-- <version>2.6.6</version> -->
-    </dependency>
-## yml
-    rabbitmq:
-        host: amqp-cn-7mz2n7349002.cn-shanghai.amqp-0.net.mq.amqp.aliyuncs.com
-        port: 5672
-        username: MjphbXFwLWNuLTdtejJuNzM0OTAwMjpMVEFJNXREandhQW5tYmtSbjVHdVlKOUo=
-        password: ODg0Qzc2Q0E2ODNCNEQ3NDM2NDMxQzE1NzdBQzEyMjgwMzExNDc5QzoxNjUwMzM0NTYzMzA4
-        virtual-host: tiku_test
-        listener:
-            simple:
-                acknowledge-mode: manual
 
 ## send
     @ActiveProfiles("dev")
@@ -99,3 +82,20 @@
             System.out.println("消费者接收到direct.queue1的消息：【" + msg + "】");
         }*/
     }
+## ack机制
++ @Header(AmqpHeaders.DELIVERY_TAG) tag 取出来当前消息在队列中的的索引
++ multiple:为true的话就是批量确认
++ channel.basicAck(tag, false);
+  ### ack应答
+1. 拒绝，有异常就绝收消息
+   > requeue:true为将消息重返当前消息队列,还可以重新发送给消费者; false:将消息丢弃
+
+   > basicNack(long deliveryTag, boolean multiple, boolean requeue)
+
+   >> channel.basicNack(tag,false,true)
+   >
+   > > mq每60秒重试一次，总共16次
+2. 响应成功
+   > channel.basicAck(tag, false);
+3. 不响应
+   > mq每60秒重试一次，总共16次
