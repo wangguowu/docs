@@ -149,7 +149,6 @@ mysql存储
 * 时区：全球划分为24个时区，每个时区占经度15°
 * 区时：各个时区都以该时区**中央经线**的地方时 为 整个时区的同一时间，叫区时，又叫**标准时**
 ![img_1.png](img_1.png)
-[comment]: <> (![RUNOOB 图标]&#40;https://p1-jj.byteimg.com/tos-cn-i-t2oaga2asx/gold-user-assets/2020/4/17/1718646fbdf72026~tplv-t2oaga2asx-zoom-in-crop-mark:1304:0:0:0.awebp "RUNOOB"&#41;)
 参考链接：[https://juejin.cn/post/6844904129962180616](https://juejin.cn/post/6844904129962180616)
 
 **- End -**
