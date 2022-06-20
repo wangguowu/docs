@@ -18,7 +18,7 @@
 ![img_1.png](img_1.png)
 * 参考链接：https://www.cnblogs.com/hellowhy/p/14590163.html
 
-### 4.查看容器运行状态
+### 5.查看容器运行状态
 ![img_2.png](img_2.png)
 ![img_3.png](img_3.png)
 ### 4.客户端连接测试(端口3307，密码123456)
