@@ -48,6 +48,16 @@ GMT + 8 = UTC + 8 = CST
         return infoCollect;
     }
 ```
+InfoCollect.java中createTime注解<br>
+**@JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")**
+```
+   public class BaseEntity implements Serializable {
+      /** 创建时间 */
+      @ApiModelProperty(hidden = true)
+      @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
+      private Date createTime; 
+   }
+```
 5. 结果观察
 
 日志内容
