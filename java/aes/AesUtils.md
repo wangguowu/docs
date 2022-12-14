@@ -39,7 +39,7 @@ public static void main(String[] args) {
     String decryptStr = aes.decryptStr(encryptHex, CharsetUtil.CHARSET_UTF_8);
     log.info("decryptStr = 【{}】", decryptStr);
 
-    // encode
+    // 加密
     String enStr = aes.encryptHex(decryptStr);
     System.out.println(enStr);
     System.out.println(enStr.equals(encryptHex));
